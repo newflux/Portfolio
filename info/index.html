@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Info - Santosh V.</title>
+    
+    <link rel="icon" type="image/x-icon" href="/assets/favicon/favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap">
+    <link rel="preload" href="/assets/fonts/Breton.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <link rel="stylesheet" href="/styles/index.css">
+    <style>
+      body {
+        background-color: #0a0a0a;
+        color: #fff;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      .info-page-container {
+        padding: 2rem 4rem;
+        height: 100vh;
+        box-sizing: border-box;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+      .back-btn {
+        position: absolute;
+        top: 2rem;
+        right: 4rem;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        color: #fff;
+        text-decoration: none;
+        text-transform: uppercase;
+        opacity: 0.8;
+        transition: opacity 0.3s ease;
+        z-index: 100;
+      }
+      .back-btn:hover {
+        opacity: 1;
+      }
+      .info-header {
+        font-family: 'Breton', sans-serif;
+        font-size: clamp(2rem, 4vw, 4rem);
+        margin: 0 0 1rem 0;
+        font-weight: 300;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .info-grid {
+        display: flex;
+        gap: 3rem;
+        align-items: flex-start;
+        flex: 1;
+      }
+      .info-left {
+        width: 25%;
+        flex-shrink: 0;
+      }
+      .info-right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+      .info-image-wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 1;
+        border-radius: 4px;
+        overflow: hidden;
+        margin-bottom: 1.5rem;
+      }
+      .info-image-wrap .cross {
+        position: absolute;
+        color: #fff;
+        font-size: 1.2rem;
+        font-family: 'Space Mono', monospace;
+        opacity: 0.6;
+        z-index: 2;
+        line-height: 1;
+      }
+      .info-image-wrap .cross.top-left { top: 1rem; left: 1rem; }
+      .info-image-wrap .cross.top-right { top: 1rem; right: 1rem; }
+      .info-image-wrap .cross.bottom-left { bottom: 1rem; left: 1rem; }
+      .info-image-wrap .cross.bottom-right { bottom: 1rem; right: 1rem; }
+      
+      .info-photo-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: contrast(1.1) brightness(0.95);
+      }
+      
+      .info-meta-row {
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 0.8rem;
+        margin-bottom: 1rem;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .meta-label {
+        color: #666;
+        font-weight: 600;
+      }
+      .meta-value {
+        color: #d0d0d0;
+        font-weight: 400;
+      }
+      
+      .info-email {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: #fff;
+        text-decoration: none;
+        margin-top: 1rem;
+        display: inline-block;
+      }
+      .info-version {
+        float: right;
+        font-family: 'Inter', sans-serif;
+        font-size: 0.75rem;
+        color: #666;
+        margin-top: 1.1rem;
+      }
+
+      .info-right-label {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        color: rgba(255, 255, 255, 0.5);
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+      }
+      .info-headline {
+        font-family: 'Breton', sans-serif;
+        font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+        line-height: 1.1;
+        margin-bottom: 1rem;
+        font-weight: 300;
+      }
+      .info-body {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        color: #d0d0d0;
+        max-width: 90%;
+        margin-bottom: 1.5rem;
+      }
+
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 1.5rem;
+        flex: 1;
+      }
+      .skill-col h3 {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        color: #666;
+        margin-bottom: 1.5rem;
+        text-transform: uppercase;
+      }
+      .skill-col ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .skill-col li {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.85rem;
+        color: #f0f0f0;
+        font-weight: 400;
+      }
+      
+      @media (max-width: 900px) {
+        .info-grid {
+          flex-direction: column;
+          gap: 4rem;
+        }
+        .info-left, .info-right {
+          width: 100%;
+        }
+        .skills-grid {
+          grid-template-columns: repeat(2, 1fr);
+          row-gap: 2.5rem;
+        }
+        .info-page-container {
+          padding: 2rem 1.5rem;
+        }
+        .back-btn {
+          top: 2rem;
+          right: 1.5rem;
+        }
+        .info-body {
+          max-width: 100%;
+        }
+      }
+      
+      /* Heaven painting background */
+      .heaven-bg {
+        position: fixed;
+        top: -5%;
+        left: -5%;
+        width: 110vw;
+        height: 110vh;
+        background-image: url('/assets/images/portal.png');
+        background-size: cover;
+        background-position: center;
+        opacity: 0.12; /* subtle blending */
+        pointer-events: none;
+        z-index: 0;
+        filter: saturate(1.2) contrast(1.1);
+        transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+        will-change: transform;
+      }
+      
+      .sanskrit-text {
+        font-family: 'Inter', sans-serif;
+        font-size: 1rem;
+        line-height: 1.8;
+        color: #ff3b14;
+        margin-top: 2rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="ambient-glow"></div>
+    <div class="heaven-bg"></div>
+    <div class="info-page-container">
+      <a href="/" class="back-btn">BACK</a>
+      
+      <h1 class="info-header">Info</h1>
+      
+      <div class="info-grid">
+        <div class="info-left">
+          <div class="info-image-wrap">
+            <span class="cross top-left">+</span>
+            <span class="cross top-right">+</span>
+            <span class="cross bottom-left">+</span>
+            <span class="cross bottom-right">+</span>
+            <img src="/assets/images/profile/me.avif" alt="Santosh V." class="info-photo-img" />
+          </div>
+          
+          <div class="info-meta-row">
+            <span class="meta-label">BASED IN</span>
+            <span class="meta-value">Bangalore, India</span>
+          </div>
+          <div class="info-meta-row">
+            <span class="meta-label">STATUS</span>
+            <span class="meta-value">Software Engineer</span>
+          </div>
+          
+          <div style="margin-top: 1rem;">
+            <a href="mailto:santoshv.live@gmail.com" class="info-email">santoshv.live@gmail.com</a>
+            <span class="info-version">→ V3.0</span>
+          </div>
+        </div>
+        
+        <div class="info-right">
+          <div class="info-right-label">ABOUT</div>
+          <h2 class="info-headline">Santosh V.</h2>
+          <div class="info-body">
+            <p style="margin-top: 0;">I am deeply focused on rewiring reality by building advanced Brain-Computer Interfaces (BCI) at Cogniwire.</p>
+            <p class="sanskrit-text">
+              अन्यथा शरणं नास्ति त्वमेव शरणं मम ।<br>
+              तस्मात् कारण्यभावेन रक्ष रक्ष जनार्दन ॥
+            </p>
+          </div>
+          
+          <div class="skills-grid">
+            <div class="skill-col">
+              <h3>Frontend</h3>
+              <ul>
+                <li>HTML / CSS</li>
+                <li>JS / TS</li>
+                <li>React / Next.js</li>
+                <li>Vue</li>
+                <li>React Native</li>
+              </ul>
+            </div>
+            <div class="skill-col">
+              <h3>Animation & 3D</h3>
+              <ul>
+                <li>GSAP</li>
+                <li>Lenis</li>
+                <li>Three.js</li>
+                <li>WebGL</li>
+                <li>CAD Design</li>
+              </ul>
+            </div>
+            <div class="skill-col">
+              <h3>Backend & ML</h3>
+              <ul>
+                <li>C++ / Node</li>
+                <li>Python (NLTK)</li>
+                <li>Machine Learning</li>
+                <li>DSP</li>
+                <li>Supabase</li>
+              </ul>
+            </div>
+            <div class="skill-col">
+              <h3>Hardware & Tools</h3>
+              <ul>
+                <li>Embedded (IoT/SLAM)</li>
+                <li>PCB Design</li>
+                <li>Git / Linux</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Interactive parallax clouds
+      const bg = document.querySelector('.heaven-bg');
+      if (bg) {
+        document.addEventListener('mousemove', (e) => {
+          // Calculate movement based on mouse position (normalized between -1 and 1)
+          const x = (e.clientX / window.innerWidth - 0.5) * -30;
+          const y = (e.clientY / window.innerHeight - 0.5) * -30;
+          
+          // Apply transform
+          bg.style.transform = `translate(${x}px, ${y}px)`;
+        });
+      }
+    </script>
+  </body>
+</html>

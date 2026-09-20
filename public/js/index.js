@@ -434,6 +434,7 @@ master.add(() => {
 if (mustSkip) {
   master.progress(1);
   master.pause();
+  startShader();
   if (!shouldSkipLongIntro) {
     lenis.scrollTo(0, { immediate: true });
     _forceScrollTop();
@@ -714,6 +715,10 @@ async function setupScrollReveal() {
 
 function setupAboutSection() {
   const aboutText = document.getElementById('about-text');
+  if (!aboutText) {
+    setupProjectsSection();
+    return;
+  }
   const photoWrap = document.getElementById('about-photo-wrap');
 
   
@@ -886,19 +891,26 @@ function setupProjectsSection() {
   onProjectsScroll();
 
   function deactivateAll() {
-    if (currentIdx >= 0) items[currentIdx].classList.remove('active');
+    items.forEach(it => it.classList.remove('active'));
     currentIdx = -1;
     gsap.to(card, { opacity: 0, duration: 0.25, ease: 'power2.in' });
   }
 
   function activateProject(i) {
     if (i === currentIdx) return;
-    if (currentIdx >= 0) items[currentIdx].classList.remove('active');
-    items[i].classList.add('active');
+    const wasActive = currentIdx >= 0;
+    currentIdx = i;
+    items.forEach((it, idx) => {
+      if (idx >= i - 1 && idx <= i + 1) {
+        it.classList.add('active');
+      } else {
+        it.classList.remove('active');
+      }
+    });
 
-    if (currentIdx === -1) {
+    if (!wasActive) {
       
-      cover.src = items[i].dataset.img;
+      cover.src = _coverCache[i] ? _coverCache[i].src : items[i].dataset.img;
       dateEl.textContent = items[i].dataset.date;
       gsap.to(card, { opacity: 1, duration: 0.4, ease: 'power2.out' });
     } else {
@@ -1023,7 +1035,7 @@ function setupProjectsSection() {
     (function buildSlices() {
       var SLICES = 10;
       var imgW = Math.min(Math.max(120, vw * 0.14), 210);
-      var imgH = imgW * 2 / 3;
+      var imgH = imgW;
       
       var orbitR = (vw * 0.34 + 500) / 2; 
       var bendRad = imgW / orbitR;
@@ -1873,50 +1885,49 @@ function setupProjectsSection() {
   const isEn = window.__I18N_LANG === 'en';
 
   const PROJECTS = {
-    'cyberdiag': {
-      desc: isEn ? "Showcase website for the CyberDiag app, presenting its features and benefits, and offering download for easy access." : "Site web de présentation de l'application CyberDiag, pour présenter ses fonctionnalités et ses avantages et proposer le téléchargement afin de faciliter son accès.",
-      category: isEn ? 'Website' : 'Site Web', year: '2026', tags: ['Gsap', 'Lenis', 'Three.js'],
-      link: 'https://cyberdiag.dev',
-      images: ['assets/images/projects/CyberDiagWebsite/image1.png', 'assets/images/projects/CyberDiagWebsite/image2.png', 'assets/images/projects/CyberDiagWebsite/image3.png'],
+    'cogniwire': {
+      desc: "Architected and engineered the entire frontend presence using GSAP for high-performance animations. This marked my foundational entry into deep frontend engineering, transforming static ideas into a dynamic, interactive web experience.",
+      category: 'Frontend Engineering', year: '2025', tags: ['GSAP', 'Web Design', 'Frontend'],
+      link: 'https://cogniwire.tech',
+      images: ['assets/images/projects/Cogniwire/1.png', 'assets/images/projects/Cogniwire/2.png', 'assets/images/projects/Cogniwire/3.png']
     },
-    'overtake': {
-      desc: isEn ? "Arcade-flavoured racing simulator, still under development. You can already drive on a low poly reproduction of the Spa-Francorchamps circuit, at the wheel of several car types running full physics (Cannon): GTE cars, plus a still experimental drift-oriented handling. The project aims at far more ambitious goals." : "Simulateur de course automobile à caractère arcade, encore en cours de création. On y roule déjà sur une reproduction en low poly du circuit de Spa-Francorchamps, au volant de plusieurs types de voitures dotées d'une physique complète (Cannon) : des GTE, ainsi qu'un comportement orienté drift encore expérimental. Le projet vise des objectifs bien plus ambitieux.",
-      category: isEn ? 'Web Game' : 'Jeu Web', year: '2026', tags: ['Three.js', 'WebGL', 'Cannon.js'],
-      images: ['assets/images/projects/Overtake/image1.png', 'assets/images/projects/Overtake/image2.png', 'assets/images/projects/Overtake/image3.png', 'assets/images/projects/Overtake/image4.png', 'assets/images/projects/Overtake/image5.png'],
+    'madhwa': {
+      desc: "A high-traffic web platform built for a podcast channel (~15k followers). Integrated custom ASCII art algorithms and automated Google API DevOps pipelines to dynamically fetch and deploy new podcast catalogues instantly upon upload.",
+      category: 'Web Platform', year: '2026', tags: ['API Integration', 'DevOps', 'ASCII Art'],
+      link: 'https://madhwahrudayavaasa.co.in',
+      images: ['assets/images/projects/Madhwa/1.png', 'assets/images/projects/Madhwa/2.png']
     },
-    'anima': {
-      desc: isEn ? "Website about animal rights, created to practice web animations with tools like GSAP and Lenis." : "Site web sur la cause animale afin de m'exercer à la création d'animations web avec des outils comme GSAP ou Lenis.",
-      category: isEn ? 'Website' : 'Site Web', year: '2026', tags: ['Gsap', 'Lenis'],
-      link: 'https://skynigh1.github.io/Anima/',
-      images: ['assets/images/projects/Anima/image1.png', 'assets/images/projects/Anima/image2.png', 'assets/images/projects/Anima/image3.png'],
+    'rehave': {
+      desc: "My most ambitious hardware-software crossover. Designed, 3D-printed (CAD), and assembled an end-to-end neurotech headset. Engineered custom PCBs to accurately capture brain signals. Currently holding 1 copyright and an active patent process for this cognitive system.",
+      category: 'Neurotech Hardware', year: '2026', tags: ['PCB Design', 'CAD', 'Hardware'],
+      images: ['assets/images/projects/Rehave/1.PNG', 'assets/images/projects/Rehave/2.png', 'assets/images/projects/Rehave/3.png', 'assets/images/projects/Rehave/4.png', 'assets/images/projects/Rehave/5.png']
     },
-    'beyond-the-clouds': {
-      desc: isEn ? "A 3D world built with Three.js and WebGL, entirely on the web, aiming to recreate the visual DNA of the game Sky: Children of the Light. An experience carried out above all as a way to learn." : "Monde 3D en Three.js et WebGL, entièrement sur le web, visant à recréer l'ADN visuel du jeu Sky: Children of the Light. Une expérience menée avant tout dans un but d'apprentissage.",
-      category: isEn ? '3D Experience' : 'Expérience 3D', year: '2026', tags: ['Three.js', 'WebGL', 'GLSL'],
-      link: 'https://skynigh1.github.io/Beyond-the-Clouds/',
-      images: ['assets/images/projects/Beyond%20the%20Clouds/image1.png', 'assets/images/projects/Beyond%20the%20Clouds/image2.png', 'assets/images/projects/Beyond%20the%20Clouds/image3.png', 'assets/images/projects/Beyond%20the%20Clouds/image4.png', 'assets/images/projects/Beyond%20the%20Clouds/image5.png'],
+    'aura-exe': {
+      desc: "A 3-iteration neuro-analysis ecosystem. Evolved from a Vue web app, to a React/Electron hybrid, into a blazing-fast C++ standalone application. Leveraged DSP and ML algorithms to decode raw brain signals in real-time and generate analytical PDF reports, backed by Supabase auth and 3D visualizers.",
+      category: 'Standalone Application', year: '2026', tags: ['C++', 'Electron', 'Machine Learning', 'Supabase'],
+      images: ['assets/images/projects/AuraExe/1.png', 'assets/images/projects/AuraExe/2.png', 'assets/images/projects/AuraExe/3.png', 'assets/images/projects/AuraExe/4.png']
     },
-    'zenith': {
-      desc: isEn ? "Innovative web browser focused on privacy and performance, featuring a built-in ad blocker, optimized tab management, and extensive customization." : "Navigateur web innovant axé sur la confidentialité et la performance, avec bloqueur de publicités intégré, gestion optimisée des onglets et personnalisation poussée.",
-      category: isEn ? 'Desktop App' : 'Application Desktop', year: '2026', tags: ['Electron', 'JavaScript', 'Three.js'],
-      link: 'https://skynigh1.github.io/Zenith/',
-      images: ['assets/images/projects/Zenith/image1.png', 'assets/images/projects/Zenith/image2.png', 'assets/images/projects/Zenith/image3.png'],
+    'matha-app': {
+      desc: "A complete, production-ready mobile application built in React Native. Fully architected the frontend to handle secure payments, seamless bookings, receipt generation, and real-time data analytics, ready for imminent PlayStore deployment.",
+      category: 'Mobile Application', year: '2026', tags: ['React Native', 'Mobile Dev', 'Payments'],
+      images: ['assets/images/projects/MathaApp/1.png', 'assets/images/projects/MathaApp/2.png', 'assets/images/projects/MathaApp/3.png']
     },
-    'skymcdb': {
-      desc: isEn ? "A powerful and intuitive tool designed to manage, organize, and optimize your Minecraft building projects, developed specifically for builders." : "Un outil puissant et intuitif conçu pour gérer, organiser et optimiser vos projets de construction Minecraft, développé spécifiquement pour les builders.",
-      category: isEn ? 'Desktop App' : 'Application Desktop', year: '2024', tags: ['Java', 'JavaFX', 'CSS'],
-      images: ['assets/images/projects/skymcdb/image.png', 'assets/images/projects/skymcdb/image2.png', 'assets/images/projects/skymcdb/image3.png', 'assets/images/projects/skymcdb/image4.png'],
+    'kharosthi': {
+      desc: "A bespoke machine learning framework built to decrypt and translate the ancient Kharosthi script into English. Leveraged NLTK and advanced ML classification models to parse unknown linguistic patterns.",
+      category: 'Machine Learning Framework', year: '2024', tags: ['Python', 'NLTK', 'AI/ML'],
+      images: ['assets/images/projects/Covers/6.jpeg']
     },
-    'chromablock': {
-      desc: isEn ? "Web adaptation of SkymcDB to reach a wider audience, introducing brand new features for Minecraft builders." : "Adaptation web de SkymcDB, pour élargir l'audience, permettant des fonctionnalités inédites dans le domaine du build Minecraft.",
-      category: 'Web Application', year: '2024', tags: ['JavaScript', 'HTML', 'CSS'],
-      images: ['assets/images/projects/chromablock/image1.png', 'assets/images/projects/chromablock/image2.png', 'assets/images/projects/chromablock/image3.png'],
+    'yanam-robo': {
+      desc: "An autonomous vehicular robot trained entirely on native Kannada voice commands. Engineered using SLAM algorithms and custom embedded hardware (Raspberry Pi/MCUs). Trained against a massive localized dataset to navigate and respond dynamically.",
+      category: 'Autonomous Robotics', year: '2025', tags: ['SLAM', 'Embedded Systems', 'Computer Vision'],
+      link: 'https://www.youtube.com/watch?v=HwEFCBI_ZVM',
+      images: ['assets/images/projects/Covers/7.jpeg']
     },
-    'cyberdiag-app': {
-      desc: isEn ? "Desktop application designed for SMEs to perform comprehensive cybersecurity diagnostics. Intuitive interface to assess vulnerabilities and provide tailored recommendations." : "Application conçue pour les PME afin de réaliser des diagnostics de cybersécurité complets. Interface intuitive pour évaluer les vulnérabilités et proposer des recommandations personnalisées.",
-      category: isEn ? 'Desktop App' : 'Application Desktop', year: '2026', tags: ['Python', 'Gsap', 'Three.js'],
-      images: ['assets/images/projects/cyberdiag/image1.png', 'assets/images/projects/cyberdiag/image2.png', 'assets/images/projects/cyberdiag/image3.png'],
-    },
+    'yolo': {
+      desc: "An IoT and computer vision ecosystem designed for emergency response. Deployed advanced object detection (YOLO) to track vehicle license plates in real-time, autonomously triggering alerts to nearby hospitals upon detecting accidents.",
+      category: 'IoT & Computer Vision', year: '2023', tags: ['YOLO', 'IoT', 'Computer Vision'],
+      images: ['assets/images/projects/Covers/8.jpeg']
+    }
   };
 
   const detailEl = document.getElementById('project-detail');
@@ -2015,7 +2026,7 @@ function setupProjectsSection() {
       detailVisit.classList.remove('has-link');
     }
     
-    var allImages = [clickedItem.dataset.img].concat(proj.images);
+    var allImages = proj.images.slice();
     detailThumbsInner.innerHTML = allImages.map(function (src) { return '<img src="' + src + '" alt="" decoding="async">'; }).join('');
     detailSelected.innerHTML = '<img src="' + allImages[0] + '" alt="" decoding="async">';
     detailThumbsInner.querySelectorAll('img').forEach(function (img, i) {
@@ -2370,56 +2381,21 @@ document.addEventListener('click', function (e) {
 }, true);
 
 // --- AWARDS LOGIC ---
-document.addEventListener("DOMContentLoaded", () => {
+(function() {
   const awardItems = gsap.utils.toArray('.award-item');
   if (awardItems.length > 0) {
     // ScrollTrigger to highlight the line closest to the center
     awardItems.forEach(item => {
       ScrollTrigger.create({
         trigger: item,
-        start: "top center+=15%", // adjust triggers so they catch the line better
-        end: "bottom center-=15%",
+        start: "top 65%", // Narrower window so max ~3 light up
+        end: "bottom 35%",
         toggleClass: { targets: item, className: "active-award" }
       });
     });
-
-    // Custom cursor logic: Show project cover when hovering on award items
-    const awardCursor = document.createElement('img');
-    awardCursor.style.position = 'fixed';
-    awardCursor.style.top = '0';
-    awardCursor.style.left = '0';
-    awardCursor.style.width = '250px';
-    awardCursor.style.height = 'auto';
-    awardCursor.style.borderRadius = '5px';
-    awardCursor.style.pointerEvents = 'none';
-    awardCursor.style.zIndex = '99999';
-    document.body.appendChild(awardCursor);
-    
-    // Set initial bounds via GSAP directly
-    gsap.set(awardCursor, { xPercent: -50, yPercent: -50, scale: 0.8, opacity: 0 });
-
-    let isAwardHovered = false;
-
-    window.addEventListener('mousemove', (e) => {
-      if (isAwardHovered) {
-        gsap.set(awardCursor, { x: e.clientX, y: e.clientY });
-      }
-    });
-
-    awardItems.forEach(item => {
-      item.addEventListener('mouseenter', (e) => {
-        isAwardHovered = true;
-        const imgSrc = item.getAttribute('data-cursor-img');
-        if (imgSrc) {
-          awardCursor.src = imgSrc;
-        }
-        gsap.set(awardCursor, { x: e.clientX, y: e.clientY });
-        gsap.to(awardCursor, { opacity: 1, scale: 1, duration: 0.3, overwrite: "auto" });
-      });
-      item.addEventListener('mouseleave', () => {
-        isAwardHovered = false;
-        gsap.to(awardCursor, { opacity: 0, scale: 0.8, duration: 0.3, overwrite: "auto" });
-      });
-    });
   }
-});
+})();
+
+
+
+
