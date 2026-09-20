@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import EyeHero from './EyeHero';
 
 const scripts = [
   'js/i18n.js',
@@ -36,13 +37,14 @@ function App() {
 
   return (
     <>
+
         <div className="intro-bg" id="intro-bg"></div>
 
   <div className="name-layer" id="name-layer">
-    <div className="preloader-content" id="preloader-content">
-      <div id="preloader-logo">L</div>
-      <span id="preloader-luke">uke</span>
-      <span id="preloader-baffait"> Baffait</span>
+    <div className="preloader-content" id="preloader-content" style={{ opacity: 0, pointerEvents: 'none' }}>
+      <div id="preloader-logo">S</div>
+      <span id="preloader-luke">antosh</span>
+      <span id="preloader-baffait"> V</span>
       <span id="preloader-dot">.</span>
     </div>
   </div>
@@ -56,24 +58,20 @@ function App() {
     <section className="hero" id="hero">
       <h1 className="sr-only" >Luke Baffait, Creative Developer, computer science student in Vannes, specialized in web development, animation and interactive design.</h1>
       <div className="hero-canvas" id="hero-canvas"></div>
-
+      <EyeHero />
       <div className="hero-content">
-        <div className="hero-tagline" id="hero-tagline" >
-          Quiet creator, <span className="other-accent">bringing ideas to life</span>,<br/>
-          through motion, detail and softness.
+        <div className="hero-tagline" id="hero-tagline">
+          rewiring reality
         </div>
 
         <div className="hero-line" id="hero-line"></div>
         <div className="hero-bar" id="hero-bar">
           <div className="hero-bar-left">
-            <span className="chr-hover" data-chr="🡺V3.0"></span>
           </div>
           <nav className="hero-bar-center" aria-label="Réseaux sociaux">
-            <a className="chr-hover" data-chr="Behance" href="https://www.behance.net/lukebaffait" target="_blank" rel="noopener noreferrer" aria-label="Behance"></a>
+            <a className="chr-hover" data-chr="LinkedIn" href="https://www.linkedin.com/in/meflux/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
             <span className="sep" aria-hidden="true">/</span>
-            <a className="chr-hover" data-chr="LinkedIn" href="https://www.linkedin.com/in/luke-baffait/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
-            <span className="sep" aria-hidden="true">/</span>
-            <a className="chr-hover" data-chr="GitHub" href="https://github.com/SkyNigh1" target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a>
+            <a className="chr-hover" data-chr="GitHub" href="https://github.com/newflux" target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a>
           </nav>
           <nav className="hero-bar-right" aria-label="Navigation principale">
             <a className="chr-hover" data-chr="Work" href="works/" data-page-link="work" aria-label="Work"></a>

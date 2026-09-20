@@ -599,7 +599,7 @@ async function setupScrollReveal() {
 
   scrollTl.fromTo(pContent, { x: introXvw, y: introSettledY }, { x: introXvw, y: 0, duration: 0.3, ease: 'none' }, 0);
   scrollTl.fromTo('#hero-tagline', { opacity: 1 }, { opacity: 0, duration: 0.15, ease: 'none' }, 0);
-  scrollTl.fromTo('#hero-bar', { opacity: 1 }, { opacity: 0, duration: 0.15, ease: 'none' }, 0);
+  // Keep the footer visible! Do not fade out #hero-bar
   scrollTl.fromTo('#hero-line', { opacity: 1 }, { opacity: 0, duration: 0.15, ease: 'none' }, 0);
 
   
@@ -614,10 +614,11 @@ async function setupScrollReveal() {
   const mobile = isMobileViewport();
   const exitLeft = mobile ? '-35vw' : '-55vw';
   const exitRight = mobile ? '35vw' : '55vw';
-  scrollTl.fromTo(pLogo, { x: '0vw', opacity: 1 }, { x: exitLeft, opacity: 0, duration: 0.7, ease: 'none' }, 0.3);
-  scrollTl.fromTo(pLuke, { x: '0vw', opacity: 1 }, { x: exitLeft, opacity: 0, duration: 0.7, ease: 'none' }, 0.3);
-  scrollTl.fromTo(pBaffait, { x: '0vw', opacity: 1 }, { x: exitRight, opacity: 0, duration: 0.7, ease: 'none' }, 0.3);
-  scrollTl.fromTo(pDot, { x: '0vw', opacity: 1 }, { x: exitRight, opacity: 0, duration: 0.7, ease: 'none' }, 0.3);
+  // Just fade the preloader text out cleanly at the start so it doesn't stay on the sides
+  scrollTl.fromTo(pLogo, { opacity: 1 }, { opacity: 0, duration: 0.15, ease: 'none' }, 0);
+  scrollTl.fromTo(pLuke, { opacity: 1 }, { opacity: 0, duration: 0.15, ease: 'none' }, 0);
+  scrollTl.fromTo(pBaffait, { opacity: 1 }, { opacity: 0, duration: 0.15, ease: 'none' }, 0);
+  scrollTl.fromTo(pDot, { opacity: 1 }, { opacity: 0, duration: 0.15, ease: 'none' }, 0);
 
   scrollTl.set(nameLayer, { autoAlpha: 0 }, 0.98);
 
