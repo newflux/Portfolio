@@ -63,7 +63,7 @@
     'contact.meta.status': 'Status',
     'contact.meta.delay': 'Avg. response',
     'contact.meta.base.value': 'Vannes, France',
-    'contact.meta.status.value': 'Software Engineer',
+    'contact.meta.status.value': 'Student / Freelance',
     'contact.meta.delay.value': '48h',
     'contact.eyebrow': 'Contact',
     'contact.role': 'Creative developer, focused on animation, interaction, and tailor-made web experiences.',

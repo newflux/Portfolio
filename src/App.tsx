@@ -149,9 +149,9 @@ function App() {
           <div className="proj-item" data-id="rehave" data-img="assets/images/projects/Rehave/1.PNG" data-date="06 2026">Rehave</div>
           <div className="proj-item" data-id="aura-exe" data-img="assets/images/projects/AuraExe/1.png" data-date="08 2026">Aura EXE</div>
           <div className="proj-item" data-id="matha-app" data-img="assets/images/projects/MathaApp/1.png" data-date="09 2026">Matha App</div>
-          <div className="proj-item" data-id="kharosthi" data-img="assets/images/projects/Covers/6.jpeg" data-date="05 2024">Kharosthi</div>
-          <div className="proj-item" data-id="yanam-robo" data-img="assets/images/projects/Covers/7.jpeg" data-date="07 2025">Yanam Robo</div>
-          <div className="proj-item" data-id="yolo" data-img="assets/images/projects/Covers/8.jpeg" data-date="11 2023">YOLO</div>
+          <div className="proj-item" data-id="kharosthi" data-img="assets/images/portal.png" data-date="05 2024">Kharosthi</div>
+          <div className="proj-item" data-id="yanam-robo" data-img="assets/images/portal.png" data-date="07 2025">Yanam Robo</div>
+          <div className="proj-item" data-id="yolo" data-img="assets/images/portal.png" data-date="11 2023">YOLO</div>
         </div>
       </div>
     </div>
@@ -338,8 +338,7 @@ function App() {
 
       <div className="contact-dispo" id="contact-dispo-2">
         <p >
-          I'm available for<span className="other-accent"> software engineering roles</span>, 
-to work on<span className="other-accent"> ambitious projects</span> and innovative collaborations.</p>
+          I\'m available for<span className="other-accent"> freelance missions worldwide</span>, on<span className="other-accent"> your ambitious projects</span> and international collaborations.</p>
       </div>
 
       <div className="contact-frame" id="contact-frame-2">

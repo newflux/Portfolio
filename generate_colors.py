@@ -13,6 +13,7 @@ colors = {
     'teal': ((0, 0, 0), (0, 128, 128)),       # Black to Teal
     'amber': ((0, 0, 0), (255, 126, 0)),      # Black to Amber/Orange
     'white': ((0, 0, 0), (230, 230, 255)),    # Black to Stark Cosmic White
+    'red': ((0, 0, 0), (220, 20, 20)),        # Black to Red
 }
 
 for name, (black_point, white_point) in colors.items():
