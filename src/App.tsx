@@ -149,9 +149,9 @@ function App() {
           <div className="proj-item" data-id="rehave" data-img="assets/images/projects/Rehave/1.PNG" data-date="06 2026">Rehave</div>
           <div className="proj-item" data-id="aura-exe" data-img="assets/images/projects/AuraExe/1.png" data-date="08 2026">Aura EXE</div>
           <div className="proj-item" data-id="matha-app" data-img="assets/images/projects/MathaApp/1.png" data-date="09 2026">Matha App</div>
-          <div className="proj-item" data-id="kharosthi" data-img="assets/images/portal.png" data-date="05 2024">Kharosthi</div>
-          <div className="proj-item" data-id="yanam-robo" data-img="assets/images/portal.png" data-date="07 2025">Yanam Robo</div>
-          <div className="proj-item" data-id="yolo" data-img="assets/images/portal.png" data-date="11 2023">YOLO</div>
+          <div className="proj-item" data-id="kharosthi" data-img="assets/images/projects/Kharosthi/1.jpg" data-date="05 2024">Kharosthi</div>
+          <div className="proj-item" data-id="yanam-robo" data-img="assets/images/projects/YanamRobo/1.jpg" data-date="07 2025">Yanam Robo</div>
+          <div className="proj-item" data-id="yolo" data-img="assets/images/projects/YOLO/1.jpg" data-date="11 2023">YOLO</div>
         </div>
       </div>
     </div>
