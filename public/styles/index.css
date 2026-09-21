@@ -2422,14 +2422,13 @@ a.chr-hover {
   transform-origin: center center;
 }
 
-
 /* Mobile fixes for About section */
 @media (max-width: 768px) {
   .awwwards-about {
     padding: 8vh 1.5rem 10vh;
   }
   .about-editorial-grid {
-    flex-direction: column-reverse;
+    flex-direction: column;
     gap: 3rem;
   }
   .about-image-wrap {
