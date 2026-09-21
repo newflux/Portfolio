@@ -2421,3 +2421,33 @@ a.chr-hover {
   animation: tentacleWriggle 3s ease-in-out infinite;
   transform-origin: center center;
 }
+
+
+/* Mobile fixes for About section */
+@media (max-width: 768px) {
+  .awwwards-about {
+    padding: 8vh 1.5rem 10vh;
+  }
+  .about-editorial-grid {
+    flex-direction: column-reverse;
+    gap: 3rem;
+  }
+  .about-image-wrap {
+    width: 100%;
+    max-width: 100%;
+    align-items: center;
+  }
+  .about-image-inner {
+    width: 100%;
+    max-width: 320px;
+    height: 400px;
+  }
+  .about-meta-row {
+    width: 100%;
+    max-width: 320px;
+    justify-content: space-between;
+  }
+  .about-text-content {
+    padding-top: 0;
+  }
+}
