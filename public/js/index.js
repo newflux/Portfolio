@@ -1908,18 +1908,18 @@ function setupProjectsSection() {
     'kharosthi': {
       desc: "A bespoke machine learning framework built to decrypt and translate the ancient Kharosthi script into English. Leveraged NLTK and advanced ML classification models to parse unknown linguistic patterns.",
       category: 'Machine Learning Framework', year: '2024', tags: ['Python', 'NLTK', 'AI/ML'],
-      images: ['assets/images/portal.png']
+      images: ['assets/images/projects/Kharosthi/1.jpg']
     },
     'yanam-robo': {
       desc: "An autonomous vehicular robot trained entirely on native Kannada voice commands. Engineered using SLAM algorithms and custom embedded hardware (Raspberry Pi/MCUs). Trained against a massive localized dataset to navigate and respond dynamically.",
       category: 'Autonomous Robotics', year: '2025', tags: ['SLAM', 'Embedded Systems', 'Computer Vision'],
       link: 'https://www.youtube.com/watch?v=HwEFCBI_ZVM',
-      images: ['assets/images/portal.png']
+      images: ['assets/images/projects/YanamRobo/1.jpg']
     },
     'yolo': {
       desc: "An IoT and computer vision ecosystem designed for emergency response. Deployed advanced object detection (YOLO) to track vehicle license plates in real-time, autonomously triggering alerts to nearby hospitals upon detecting accidents.",
       category: 'IoT & Computer Vision', year: '2023', tags: ['YOLO', 'IoT', 'Computer Vision'],
-      images: ['assets/images/portal.png']
+      images: ['assets/images/projects/YOLO/1.jpg']
     }
   };
 
