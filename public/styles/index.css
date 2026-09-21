@@ -1814,7 +1814,7 @@ a.chr-hover {
 
 .footer-name-luke {
   font-family: 'Breton', sans-serif;
-  font-size: 17vw;
+  font-size: 11vw;
   font-weight: 300;
   line-height: 0.8;
   letter-spacing: -0.06em;
@@ -1827,7 +1827,7 @@ a.chr-hover {
 
 .footer-name-baffait {
   font-family: 'other', sans-serif;
-  font-size: 17vw;
+  font-size: 11vw;
   line-height: 0.8;
   letter-spacing: -0.06em;
   color: #f0f0f0;
@@ -1835,7 +1835,7 @@ a.chr-hover {
 
 .footer-name-dot {
   font-family: 'other', sans-serif;
-  font-size: 17vw;
+  font-size: 11vw;
   line-height: 0.8;
   color: #ff1e00;
 }

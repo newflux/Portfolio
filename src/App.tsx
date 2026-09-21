@@ -352,8 +352,8 @@ function App() {
 
       <div className="contact-bottom" id="contact-bottom">
         <nav className="contact-socials" id="contact-socials" aria-label="Réseaux sociaux">
-          <a className="chr-hover" data-chr-contact="GitHub" href="https://github.com/SkyNigh1" target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a>
-          <a className="chr-hover" data-chr-contact="LinkedIn" href="https://www.linkedin.com/in/santosh-v/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
+          <a className="chr-hover" data-chr-contact="GitHub" href="https://github.com/newflux" target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a>
+          <a className="chr-hover" data-chr-contact="LinkedIn" href="https://www.linkedin.com/in/meflux/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
         </nav>
         <a className="contact-mail" id="contact-mail" href="mailto:santoshv.live@gmail.com">santoshv.live@gmail.com</a>
       </div>
@@ -370,8 +370,8 @@ function App() {
           <span className="chr-hover footer-date" data-chr-footer="© 2026"></span>
         </div>
         <nav className="footer-top-col" aria-label="Réseaux sociaux">
-          <a className="chr-hover" data-chr-footer="GitHub" href="https://github.com/SkyNigh1" target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a>
-          <a className="chr-hover" data-chr-footer="LinkedIn" href="https://www.linkedin.com/in/santosh-v/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
+          <a className="chr-hover" data-chr-footer="GitHub" href="https://github.com/newflux" target="_blank" rel="noopener noreferrer" aria-label="GitHub"></a>
+          <a className="chr-hover" data-chr-footer="LinkedIn" href="https://www.linkedin.com/in/meflux/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"></a>
         </nav>
         <nav className="footer-top-col" aria-label="Navigation pied de page">
           <a className="chr-hover" data-chr-footer="Work" href="works/" data-page-link="work" aria-label="Work"></a>
